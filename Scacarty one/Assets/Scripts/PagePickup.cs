@@ -21,9 +21,17 @@ public class PagePickup : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(PickUpCam.transform.position, PickUpCam.transform.forward, out hit, range))
             {
-                Object.Destroy(GameObject.FindWithTag("Page"));
-                PageCount++;
-                Debug.Log("Picked up page" + PageCount);
+                if(hit.collider.CompareTag("Page"))
+                {
+                    hit.collider.enabled = false;
+                    Destroy(hit.collider.gameObject);
+                    
+                    PageCount++;
+                    Debug.Log("Picked up page" + PageCount);
+                }
+                
+                //Object.Destroy(GameObject.FindWithTag("Page"));
+                
                 
             }
         }

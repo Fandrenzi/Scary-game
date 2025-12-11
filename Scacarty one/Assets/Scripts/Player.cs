@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
     private float xRot;
     private Rigidbody rb;
 
+    public Transform PlayerCamera;
+
     void Start()
     {
         PlayerSpeed = WalkSpeed;
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+
+        rb.freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -24,13 +28,15 @@ public class Player : MonoBehaviour
     {
         yRot += Input.GetAxis("Mouse X") * mouseSensitivity;
         xRot -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        transform.localEulerAngles = new Vector3(xRot, yRot, 0f);
         xRot = Mathf.Clamp(xRot, -90f, 90f);
 
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        transform.localRotation = Quaternion.Euler(0f, yRot, 0f);
+        PlayerCamera.localRotation = Quaternion.Euler(xRot, 0f, 0f);
 
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        //float moveX = Input.GetAxis("Horizontal");
+        //float moveZ = Input.GetAxis("Vertical");
+
+        //Vector3 move = transform.right * moveX + transform.forward * moveZ;
         
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -41,6 +47,18 @@ public class Player : MonoBehaviour
         {
             PlayerSpeed = WalkSpeed;
         }
-        transform.Translate(move * PlayerSpeed * Time.deltaTime, Space.World);
+        //transform.Translate(move * PlayerSpeed * Time.deltaTime, Space.World);
+
+
+    }
+
+    void FixedUpdate()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized;
+
+        rb.MovePosition(rb.position + move * PlayerSpeed * Time.fixedDeltaTime);
     }
 }
