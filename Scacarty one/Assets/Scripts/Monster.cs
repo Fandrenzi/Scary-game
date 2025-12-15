@@ -8,7 +8,6 @@ public class Monster : MonoBehaviour
     public float teleportCooldown = 5f;
     public float returnCooldown = 10f;
 
-    //[Range(0f, 1f)]
     public float chaseProbability = 0.65f;
 
     public float rotationSpeed = 5f;
@@ -16,10 +15,21 @@ public class Monster : MonoBehaviour
     private Vector3 baseTeleportSpot;
     private float teleportTimer;
     private bool returningToBase;
+    public AudioClip teleportSound;
+    public AudioClip SpawnSound;
+    private AudioSource audioSource;
     void Start()
     {
         baseTeleportSpot = transform.position;
         teleportTimer = teleportCooldown;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null )
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = teleportSound;
     }
 
     // Update is called once per frame
@@ -68,12 +78,16 @@ public class Monster : MonoBehaviour
         Vector3 randomPosition = Player.position + Random.onUnitSphere * teleportDistance;
         randomPosition.y = transform.position.y;
         transform.position = randomPosition;
+
+        audioSource.PlayOneShot(teleportSound);
     }
 
     private void teleportToBaseSpot()
     {
         transform.position = baseTeleportSpot;
         returningToBase = true;
+
+        audioSource.PlayOneShot(SpawnSound);
     }
 
     private void RotateTowardsPlayer()

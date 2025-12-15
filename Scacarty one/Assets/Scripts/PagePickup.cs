@@ -8,6 +8,13 @@ public class PagePickup : MonoBehaviour
     public Camera PickUpCam;
     private int PageCount = 0;
 
+    private GameObject GameLogic;
+
+    private void Start()
+    {
+        GameLogic = GameObject.FindWithTag("GameLogic");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +22,7 @@ public class PagePickup : MonoBehaviour
         {
             Pickup();
         }
-
+    }
     void Pickup()
         {
             RaycastHit hit;
@@ -28,15 +35,14 @@ public class PagePickup : MonoBehaviour
                     
                     PageCount++;
                     Debug.Log("Picked up page" + PageCount);
+                    GameLogic.GetComponent<GameLogic>().pageCount += 1;
+
                 }
-                
-                //Object.Destroy(GameObject.FindWithTag("Page"));
-                
-                
+
+                if (PageCount == 3)
+                {
+                Debug.Log("Game Won");
+                }
             }
         }
     }
-}
-
-
-

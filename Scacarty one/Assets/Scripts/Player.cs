@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
 public class Player : MonoBehaviour
 {
 
@@ -14,6 +15,10 @@ public class Player : MonoBehaviour
 
     public Transform PlayerCamera;
 
+    public AudioClip WalkingSound;
+    private AudioSource audiosource;
+
+    private bool ismoving = false;
     void Start()
     {
         PlayerSpeed = WalkSpeed;
@@ -21,6 +26,10 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         rb.freezeRotation = true;
+
+       
+        audiosource = GetComponent<AudioSource>();
+        audiosource.clip = WalkingSound;
     }
 
     // Update is called once per frame
@@ -50,6 +59,7 @@ public class Player : MonoBehaviour
         //transform.Translate(move * PlayerSpeed * Time.deltaTime, Space.World);
 
 
+
     }
 
     void FixedUpdate()
@@ -60,5 +70,17 @@ public class Player : MonoBehaviour
         Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized;
 
         rb.MovePosition(rb.position + move * PlayerSpeed * Time.fixedDeltaTime);
+        
+        ismoving = move.magnitude > 0f;
+
+        if (ismoving)
+        {
+            if (!audiosource.isPlaying)
+            audiosource.Play();
+        }
+        else
+        {
+            audiosource.Stop();
+        }
     }
 }
