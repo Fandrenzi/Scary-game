@@ -445,6 +445,7 @@
 "Assets/Scripts/PagePickup.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Sceneswitcher.cs"
+"Assets/Scripts/Waypoint.cs"
 -langversion:9.0
 /deterministic
 /optimize+
