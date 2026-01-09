@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PagePickup : MonoBehaviour
 {
 
@@ -41,7 +41,7 @@ public class PagePickup : MonoBehaviour
 
                 if (PageCount == 3)
                 {
-                Debug.Log("Game Won");
+                SceneManager.LoadScene("Win");
                 }
             }
         }

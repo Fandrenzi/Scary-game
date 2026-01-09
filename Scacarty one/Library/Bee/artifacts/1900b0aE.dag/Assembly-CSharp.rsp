@@ -442,6 +442,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.2.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/GameLogic.cs"
 "Assets/Scripts/Monster.cs"
+"Assets/Scripts/MouseLock.cs"
 "Assets/Scripts/PagePickup.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Sceneswitcher.cs"
