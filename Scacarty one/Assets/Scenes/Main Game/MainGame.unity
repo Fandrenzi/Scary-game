@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -4425,6 +4425,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6460735888651231591, guid: 76f5edc2de9029549bd8d4d640c66b72, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6483535270556791082, guid: 76f5edc2de9029549bd8d4d640c66b72, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4440,6 +4444,10 @@ PrefabInstance:
     - target: {fileID: 7259340700703733058, guid: 76f5edc2de9029549bd8d4d640c66b72, type: 3}
       propertyPath: PickUpCam
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436341122537902017, guid: 76f5edc2de9029549bd8d4d640c66b72, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3271346361352340360, guid: 76f5edc2de9029549bd8d4d640c66b72, type: 3}
