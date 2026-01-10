@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game/Win.unity
     guid: 05d04bcd3cec9104f93a3f5a141e251f
   - enabled: 1
-    path: Assets/Scenes/Main Game/Dead.unity
+    path: Assets/Scenes/Main Game/DeadScene.unity
     guid: 9687cc82da5c63e42af8191d7d6ad03e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 31b63d887ab39ee47acd950d1ff30973, type: 2}
